@@ -1,0 +1,37 @@
+<section class="product">
+  <ng-container *ngIf="data$ | async as data">
+    <div class="images">
+        <div class="current" [style.backgroundImage]="selectedImage ? 'url(' + selectedImage + ')' : 'url(' + (data.images[0] || '') + ')'"></div>
+      <div class="images-list">
+        <div *ngFor="let image of data.images"  class="image" [style.backgroundImage]="'url(' + image + ')'" (click)="setSelectedImage(image)"></div>
+      </div>
+    </div>
+    <div class="info">
+      <h1 class="title">{{ data.title }}</h1>
+      <div class="price">$99</div>
+      <div class="color"><span>Color:</span> unknown</div>
+      <div class="sizes">
+        <span>Sizes:</span>
+        <div class="list">
+            <div class="size">4</div>
+            <div class="size">4.5</div>
+            <div class="size">5</div>
+        </div>
+      </div>
+      <p class="description">
+        Product Description Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit.
+      </p>
+      <div class="actions">
+        <button class="add" (click)="onAddButtonClick(data)">
+          Add to cart
+        </button>
+        <button class="favourite" (click)="onFavoriteButtonClick(data)">Add to favorites</button>
+      </div>
+      <div class="bottom">
+        <div class="purchase">19 people purchased</div>
+        <a [routerLink]="'/'">Return to store</a>
+      </div>
+    </div>
+  </ng-container>
+</section>

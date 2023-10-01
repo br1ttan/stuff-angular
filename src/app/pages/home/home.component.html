@@ -1,0 +1,10 @@
+<ng-template #template>
+  <app-poster />
+</ng-template>
+
+<section class="section">
+  <ng-container *ngIf="productData$ | async as productData">
+    <app-goods [title]="'Trending'" [data]="productData" />
+  </ng-container>
+  <app-categories />
+</section>

@@ -1,0 +1,48 @@
+<ng-template #template>
+<section class="cart">
+  <h2 class="title">Your cart</h2>
+    <ng-container *ngIf="data$ | async as data">
+      <ng-container *ngIf="data.length; else emptyCartTemplate">
+        <div *ngFor="let product of data" class="item">
+          <div
+            class="image"
+            [style.backgroundImage]="'url(' + product.images[0] + ')'"></div>
+          <div class="info">
+            <h3 class="name">{{ product.title }}</h3>
+            <div class="category">{{ product.category.name }}</div>
+          </div>
+          <div class="price">{{ product.price }}$</div>
+            <div class="quantity">
+              <div class="minus" (click)="onMinusButtonClick(product)">
+                <svg class="icon">
+                  <use xlink:href="assets/sprite.svg#minus"></use>
+                </svg>
+              </div>
+              <span>{{ product.count || 0 }}</span>
+              <div class="plus" (click)="onAddButtonClick(product)">
+                <svg class="icon">
+                  <use xlink:href="assets/sprite.svg#plus"></use>
+                </svg>
+              </div>
+            </div>
+
+          <div class="total">{{ product!.count! * product.price }}$</div>
+          <div class="close" (click)="onRemoveButtonClick(product)">
+            <svg class="icon">
+              <use xlink:href="assets/sprite.svg#close"></use>
+            </svg>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #emptyCartTemplate>
+        <div class="empty">Here is empty</div>
+      </ng-template>
+
+      <div class="actions">
+        <div class="total">TOTAL PRICE: <span>{{ totalCount }}$</span></div>
+        <button class="proceed">Proceed to checkout</button>
+      </div>
+    </ng-container>
+  </section>
+</ng-template>

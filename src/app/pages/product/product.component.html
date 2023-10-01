@@ -1,0 +1,9 @@
+<ng-template #template>
+    <app-card />
+</ng-template>
+
+<section class="product">
+    <ng-container *ngIf="productData$ | async as productData">
+        <app-goods [title]="'Related'" [data]="productData" />
+    </ng-container>
+</section>

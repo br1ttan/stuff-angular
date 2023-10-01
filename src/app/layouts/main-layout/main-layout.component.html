@@ -1,0 +1,14 @@
+<div class="app">
+  <app-header />
+  <app-user-form />
+  <div class="container">
+    <div class="tools">
+      <app-sidebar />
+      <ng-container *ngIf="ngTemplate$ | async as template">
+        <ng-container [ngTemplateOutlet]="template" />
+      </ng-container>
+    </div>
+    <router-outlet />
+  </div>
+  <app-footer />
+</div>

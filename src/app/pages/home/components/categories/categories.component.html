@@ -1,0 +1,12 @@
+<section class="section">
+  <h2>Categories</h2>
+
+  <ng-container *ngIf="data$ | async as data">
+    <div class="list">
+      <a *ngFor="let category of data.slice(0, 5)" [routerLink]="'/categories/' + category.id" class="item">
+        <div class="image" [style.backgroundImage]="'url(' + category.image  + ')'"></div>
+        <h3 className={styles.title}>{{ category.name }}</h3>
+      </a>
+    </div>
+  </ng-container>
+</section>
