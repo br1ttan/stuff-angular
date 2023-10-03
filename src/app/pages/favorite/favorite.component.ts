@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, TemplateRef, ViewChild } from '@angular/core';
-import { FavoriteState, IProduct, TemplateService } from '@features';
+import { AfterContentChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, TemplateRef, ViewChild } from '@angular/core';
+import { FavoriteState, IProduct } from '@features';
+import { BaseComponent } from '@pages/base.component';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,22 +9,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./favorite.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FavoriteComponent {
+export class FavoriteComponent extends BaseComponent implements AfterViewInit {
   @ViewChild('template')
   public template!: TemplateRef<unknown> | null;
 
-  public data$: Observable<IProduct[] | []> = this.favoriteState.getFavorite$;
+  public data$ = this.favoriteState.getFavorite$;
 
   constructor(
     private readonly favoriteState: FavoriteState,
-    private readonly templateService: TemplateService,
     private readonly changeDetector: ChangeDetectorRef
-  ) {}
+  ) {
+    super();
+  }
   
   public ngAfterViewInit(): void {
-    this.templateService.updateTemplate(this.template);
+    this.updateTemplate(this.template);
 
-    this.changeDetector.markForCheck();
+    this.changeDetector.detectChanges();
   }
 
   public onRemoveButtonClick(data: IProduct): void {

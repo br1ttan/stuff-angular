@@ -41,7 +41,7 @@
 
       <div class="actions">
         <div class="total">TOTAL PRICE: <span>{{ totalCount }}$</span></div>
-        <button class="proceed">Proceed to checkout</button>
+        <button [disabled]="!data.length" class="proceed">Proceed to checkout</button>
       </div>
     </ng-container>
   </section>

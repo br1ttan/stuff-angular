@@ -15,13 +15,13 @@ export class HeaderComponent {
     private readonly productApi: ProductApi
   ) {}
 
-  public onClearValue(): void {
+  public clearData(): void {
     this.data$ = of([]);
   }
 
   public onInputChange(value: string): void {
     if (!value) {
-      this.onClearValue();
+      this.clearData();
       
       return;
     }

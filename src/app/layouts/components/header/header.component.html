@@ -30,7 +30,7 @@
           <ng-container *ngIf="data.length">
 
             <div class="box">
-              <a *ngFor="let item of data" [routerLink]="'/product/' + item.id" class="item" (click)="onClearValue()">
+              <a *ngFor="let item of data" [routerLink]="'/product' + item.id" class="item" (click)="clearData()">
                 <div class="image" [style.backgroundImage]="'url(' + item.images[0] + ')'"></div>
                 <div class="title">{{ item.title }}</div>
               </a>

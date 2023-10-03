@@ -5,7 +5,7 @@ import { FavoriteRouting } from './favorite.routing';
 
 @NgModule({
   declarations: [
-    FavoriteComponent
+    FavoriteComponent,
   ],
   imports: [
     CommonModule,

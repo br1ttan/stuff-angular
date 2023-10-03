@@ -1,6 +1,6 @@
 <ng-template #template>
   <section class="favorite">
-    <h2 class="title">Your favorites</h2>
+  <h2 class="title">Your favorites</h2>
     <ng-container *ngIf="data$ | async as data">
       <ng-container *ngIf="data.length; else emptyFavoriteTemplate">
         <div *ngFor="let product of data" class="item">

@@ -1,14 +1,18 @@
-import { Injectable, TemplateRef } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, TemplateRef, } from '@angular/core';
+import { GoodsComponent } from '@shared/components';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TemplateService {
-  private templateSubject = new BehaviorSubject<TemplateRef<unknown> | null>(null);
-  template$ = this.templateSubject.asObservable();
+  public get getTemplate$(): Observable<TemplateRef<unknown> | null> {
+    return this.template$.asObservable();
+  }
 
-  public updateTemplate(template: TemplateRef<unknown> | null) {
-    this.templateSubject.next(template);
+  private readonly template$ = new BehaviorSubject<TemplateRef<unknown> | null>(null);
+
+  public update(template: TemplateRef<unknown>) {
+    this.template$.next(template);
   }
 }

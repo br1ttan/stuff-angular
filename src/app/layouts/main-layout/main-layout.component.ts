@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TemplateService } from '@features';
 
 @Component({
@@ -7,10 +7,14 @@ import { TemplateService } from '@features';
   styleUrls: ['./main-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainLayoutComponent { 
-  public ngTemplate$ = this.templateService.template$;
+export class MainLayoutComponent implements OnInit { 
+  public ngTemplate$ = this.templateService.getTemplate$;
 
   constructor(
     private readonly templateService: TemplateService
   ) {}
+
+  public ngOnInit(): void {
+    this.templateService.getTemplate$.subscribe((data) => console.log)    
+  }
 }

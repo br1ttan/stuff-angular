@@ -104,10 +104,15 @@ button {
   font-weight: 600;
   line-height: 20px;
   cursor: pointer;
-}
 
-button:hover {
-  background: var(--violet);
+  &:hover {
+    background: var(--violet);
+  }
+
+  &:disabled {
+    background: rgb(150, 77, 77);
+    pointer-events: none;
+  }
 }
 
 h2 {

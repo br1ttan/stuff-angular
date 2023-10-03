@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, AfterViewInit, ViewChild, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, AfterViewInit, ViewChild, TemplateRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct, ProductApi, TemplateService } from '@features';
-import { map, switchMap, Observable } from 'rxjs';
+import { BaseComponent } from '@pages/base.component';
+import { map, switchMap, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-category',
@@ -9,7 +10,7 @@ import { map, switchMap, Observable } from 'rxjs';
   styleUrls: ['./category.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CategoryComponent implements AfterViewInit {
+export class CategoryComponent extends BaseComponent implements AfterViewInit {
   @ViewChild('template')
   public template!: TemplateRef<unknown> | null;
 
@@ -28,10 +29,11 @@ export class CategoryComponent implements AfterViewInit {
   constructor(
     private readonly productApi: ProductApi,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly templateService: TemplateService
-  ) {}
+  ) {
+    super();
+  }
 
   public ngAfterViewInit(): void {
-    this.templateService.updateTemplate(this.template);
+    this.updateTemplate(this.template);
   }
 }

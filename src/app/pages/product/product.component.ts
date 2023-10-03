@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, AfterViewInit, TemplateRef, ViewChild } from '@angular/core';
-import { ProductApi, TemplateService } from '@features';
+import { ProductApi } from '@features';
+import { BaseComponent } from '@pages/base.component';
 
 @Component({
   selector: 'app-product',
@@ -7,7 +8,7 @@ import { ProductApi, TemplateService } from '@features';
   styleUrls: ['./product.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductComponent implements AfterViewInit {
+export class ProductComponent extends BaseComponent implements AfterViewInit {
   @ViewChild('template')
   public template!: TemplateRef<unknown> | null;
 
@@ -15,10 +16,11 @@ export class ProductComponent implements AfterViewInit {
   
   constructor(
     private readonly productApi: ProductApi,
-    private readonly templateService: TemplateService
-  ) {}
+  ) {
+    super();
+  }
 
   public ngAfterViewInit(): void {
-    this.templateService.updateTemplate(this.template);
+    this.updateTemplate(this.template);
   }
 }

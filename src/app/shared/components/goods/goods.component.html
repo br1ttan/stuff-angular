@@ -1,24 +1,27 @@
 <div class="goods">
   <h2>{{ title }}</h2>
   <ng-container *ngIf="data">
-  <div class="list">
-    <a *ngFor="let product of data.slice(0, 5)" class="product-a" [routerLink]="'/product/' + product.id">
-      <div
-      class="image"
-        [style.backgroundImage]="'url(' + product.images[0] + ')'"></div>
-      <div class="wrapper">
-        <h3 class="title">{{ product.title }}</h3>
-        <div class="cat">{{ product.category.name }}</div>
-        <div class="info">
-          <div class="prices">
-            <div class="price">{{ product.price }}$</div>
-            <div class="oldPrice">{{ product.price - 20 }}$</div>
-          </div>
+    <div class="list">
+      <a
+        *ngFor="let product of data.slice(0, 5)"
+        class="product-a"
+        [routerLink]="'/product/' + product.id">
+        <div
+          class="image"
+          [style.backgroundImage]="'url(' + product.images[0] + ')'"></div>
+        <div class="wrapper">
+          <h3 class="title">{{ product.title }}</h3>
+          <div class="cat">{{ product.category.name }}</div>
+          <div class="info">
+            <div class="prices">
+              <div class="price">{{ product.price }}$</div>
+              <div class="oldPrice">{{ product.price - 20 }}$</div>
+            </div>
 
-          <div class="purchases">3 purchased</div>
+            <div class="purchases">3 purchased</div>
+          </div>
         </div>
-      </div>
-    </a>
-  </div>
-</ng-container>
+      </a>
+    </div>
+  </ng-container>
 </div>

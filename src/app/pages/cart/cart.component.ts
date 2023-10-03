@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CartState, IProduct, TemplateService } from '@features';
+import { BaseComponent } from '@pages/base.component';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./cart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartComponent {
+export class CartComponent extends BaseComponent implements AfterViewInit {
   @ViewChild('template')
   public template!: TemplateRef<unknown> | null;
 
@@ -20,16 +21,17 @@ export class CartComponent {
 
   constructor(
     private readonly cartState: CartState,
-    private readonly templateService: TemplateService,
-    private readonly changeDetector: ChangeDetectorRef
-  ) {}
-  
-  public ngAfterViewInit(): void {
-    this.templateService.updateTemplate(this.template);
-
-    this.changeDetector.markForCheck();
+    private readonly changeDetector: ChangeDetectorRef,
+  ) {
+    super();
   }
 
+  public ngAfterViewInit(): void {
+    this.updateTemplate(this.template);
+    
+    this.changeDetector.detectChanges();
+  }
+  
   public onAddButtonClick(data: IProduct): void {
     this.cartState.update(data);
     this.changeDetector.detectChanges();

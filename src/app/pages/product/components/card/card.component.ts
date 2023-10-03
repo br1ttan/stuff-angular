@@ -34,9 +34,13 @@ export class CardComponent {
 
   public onAddButtonClick(data: IProduct): void {
     this.cartState.update(data);
+
+    this.changeDetector.detectChanges();
   }
   
   public onFavoriteButtonClick(data: IProduct): void {
     this.favoriteState.update(data);
+    
+    this.changeDetector.detectChanges();
   }
 }
