@@ -8,7 +8,7 @@
         [routerLink]="'/product/' + product.id">
         <div
           class="image"
-          [style.backgroundImage]="'url(' + product.images[0] + ')'"></div>
+          [style.backgroundImage]="'url(' + checkIfNoImage(product.images[0]) + ')'"></div>
         <div class="wrapper">
           <h3 class="title">{{ product.title }}</h3>
           <div class="cat">{{ product.category.name }}</div>

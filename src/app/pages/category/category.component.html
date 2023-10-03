@@ -2,8 +2,12 @@
   <app-poster />
 </ng-template>
 
-<section class="section">
-  <ng-container *ngIf="data$ | async as data">
+<section class="category">
+  <ng-container *ngIf="data$ | async as data; else loaderTemplate">
       <app-goods [title]="'Products'" [data]="data" />
     </ng-container>
+
+    <ng-template #loaderTemplate>
+      <app-loader />
+    </ng-template>
 </section>

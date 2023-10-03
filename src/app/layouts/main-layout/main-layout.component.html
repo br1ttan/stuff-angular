@@ -2,11 +2,16 @@
   <app-header />
   <app-user-form />
   <div class="container">
-    <div class="tools">
+    <div class="panel">
       <app-sidebar />
-      <ng-container *ngIf="ngTemplate$ | async as template">
-        <ng-container [ngTemplateOutlet]="template" />
-      </ng-container>
+      <ng-container 
+        *ngIf="(ngTemplate$ | async) as template; 
+        else errorTemplate" 
+        [ngTemplateOutlet]="template" />
+      
+      <ng-template #errorTemplate>
+        <app-error />
+      </ng-template>
     </div>
     <router-outlet />
   </div>

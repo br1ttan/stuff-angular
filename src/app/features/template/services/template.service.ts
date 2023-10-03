@@ -12,7 +12,7 @@ export class TemplateService {
 
   private readonly template$ = new BehaviorSubject<TemplateRef<unknown> | null>(null);
 
-  public update(template: TemplateRef<unknown>) {
-    this.template$.next(template);
+  public update(template: TemplateRef<unknown> | null): void {
+    this.template$.next(template!);
   }
 }

@@ -17,4 +17,12 @@ export class GoodsComponent {
 
   @Input({required: false})
   public title: string = '';
+
+  public checkIfNoImage(imgUrl: string): string {
+    if (imgUrl.includes('any')) {
+      return 'assets/images/no-image.svg';
+    } else {
+      return imgUrl;
+    }
+  }
 }

@@ -4,7 +4,7 @@
   <ng-container *ngIf="data$ | async as data">
     <div class="list">
       <a *ngFor="let category of data.slice(0, 5)" [routerLink]="'/categories/' + category.id" class="item">
-        <div class="image" [style.backgroundImage]="'url(' + category.image  + ')'"></div>
+        <div class="image" [style.backgroundImage]="'url(' + checkIfNoImage(category.image)  + ')'"></div>
         <h3 className={styles.title}>{{ category.name }}</h3>
       </a>
     </div>

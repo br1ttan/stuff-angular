@@ -1,7 +1,6 @@
 import { AfterContentChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, TemplateRef, ViewChild } from '@angular/core';
 import { FavoriteState, IProduct } from '@features';
 import { BaseComponent } from '@pages/base.component';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-favorite',

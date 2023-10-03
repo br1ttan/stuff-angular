@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MainLayoutComponent } from './main-layout';
 import { FooterModule, HeaderModule, SidebarModule, UserFormModule } from './components';
+import { ErrorComponent } from '@shared/components';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FooterModule, HeaderModule, SidebarModule, UserFormModule } from './com
     HeaderModule,
     SidebarModule,
     FooterModule,
-    UserFormModule
+    UserFormModule,
+    ErrorComponent
   ],
   exports: [
     MainLayoutComponent

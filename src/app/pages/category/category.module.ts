@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryComponent } from './category.component';
 import { CategoryRouting } from './category.routing';
-import { GoodsComponent, PosterComponent } from '@shared/components';
+import { GoodsComponent, LoaderComponent, PosterComponent } from '@shared/components';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,8 @@ import { GoodsComponent, PosterComponent } from '@shared/components';
     CommonModule,
     CategoryRouting,
     PosterComponent,
-    GoodsComponent
+    GoodsComponent,
+    LoaderComponent
   ]
 })
 export class CategoryModule { }

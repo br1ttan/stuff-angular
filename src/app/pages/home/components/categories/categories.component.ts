@@ -13,4 +13,12 @@ export class CategoriesComponent {
   constructor(
     private readonly categoryApi: CategoryApi
   ) {}
+
+  public checkIfNoImage(imgUrl: string): string {
+    if (imgUrl.includes('any')) {
+      return 'assets/images/no-image.svg';
+    } else {
+      return imgUrl;
+    }
+  }
 }
