@@ -1,6 +1,7 @@
 :root {
   --bg: #212123;
   --dark: #191919;
+  --dark-new: #292828;
   --dark-sea: #576067;
   --grey: #b8b8b8;
   --white: #fff;
@@ -142,4 +143,16 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-new);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--dark-sea);
 }

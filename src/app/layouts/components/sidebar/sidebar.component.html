@@ -1,17 +1,24 @@
 <section class="sidebar">
   <div class="title">CATEGORIES</div>
-    <ng-container *ngIf="data$ | async as data">
-      <nav>
-        <ul class="menu">
-          <li *ngFor="let category of data">
-            <a class="link" [routerLink]="'/categories/' + category.id">{{ category.name }}</a>
-          </li>
-        </ul>
-      </nav>
-    </ng-container>
-      
-    <div class="footer">
-      <a href="/help" target="_blank" class="link">Help</a>
-      <a href="/terms" target="_blank" class="link" style="text-decoration: underline;">Terms & Conditions</a>
-    </div>
-  </section>
+  <ng-container *ngIf="data$ | async as data">
+    <nav>
+      <ul class="menu">
+        <li *ngFor="let category of data">
+          <a class="link" [routerLink]="'/categories/' + category.id">{{
+            category.name
+          }}</a>
+        </li>
+      </ul>
+    </nav>
+  </ng-container>
+
+  <div class="footer">
+    <a href="/help" target="_blank" class="link">Help</a>
+    <a
+      href="/terms"
+      target="_blank"
+      class="link"
+      style="text-decoration: underline"
+      >Terms & Conditions</a>
+  </div>
+</section>

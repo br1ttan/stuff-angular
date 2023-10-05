@@ -1,56 +1,61 @@
 <div class="header">
-    <div class="logo">
-      <a [routerLink]="'/'">
-        <img src="assets/images/logo.svg" alt="Stuff" />
+  <div class="logo">
+    <a [routerLink]="routeEnum.Home">
+      <img src="assets/images/logo.svg" alt="Stuff" />
+    </a>
+  </div>
+
+  <div class="info">
+    <div class="user">
+      <div class="avatar"></div>
+      <div class="username">Guest</div>
+    </div>
+
+    <form class="form">
+      <div class="icon">
+        <svg class="icon">
+          <use xlink:href="assets/sprite.svg#search"></use>
+        </svg>
+      </div>
+      <div class="input">
+        <input
+          #inputElement
+          type="search"
+          name="search"
+          placeholder="Search for anything..."
+          autocomplete="off"
+          (change)="onInputChange()"
+        />
+      </div>
+      <ng-container *ngIf="data$ | async as data">
+        <ng-container *ngIf="data.length;">
+          <div class="box" boxListener (closeBox)="onCloseBox()">
+            <a
+              *ngFor="let item of data"
+              class="item"
+              (click)="onItemClick(item.id)">
+              <div
+                class="image"
+                [style.backgroundImage]="'url(' + item.images[0] + ')'"></div>
+              <div class="title">{{ item.title }}</div>
+            </a>
+          </div>
+        </ng-container>
+      </ng-container>
+    </form>
+
+    <div class="account">
+      <a [routerLink]="routeEnum.Favorite">
+        <svg class="icon-fav">
+          <use xlink:href="assets/sprite.svg#heart"></use>
+        </svg>
+      </a>
+
+      <a [routerLink]="routeEnum.Cart">
+        <svg class="icon-cart">
+          <use xlink:href="assets/sprite.svg#bag"></use>
+        </svg>
       </a>
     </div>
-  
-    <div class="info">
-      <div class="user">
-        <div class="avatar"></div>
-        <div class="username">Guest</div>
-      </div>
-  
-      <form class="form">
-        <div class="icon">
-          <svg class="icon">
-            <use xlink:href="assets/sprite.svg#search"></use>
-          </svg>
-        </div>
-        <div class="input">
-          <input
-            #input
-            type="search"
-            name="search"
-            placeholder="Search for anything..."
-            autocomplete="off"
-            (change)="onInputChange(input.value)"/>
-        </div>
-        <ng-container *ngIf="data$ | async as data">
-          <ng-container *ngIf="data.length">
-
-            <div class="box">
-              <a *ngFor="let item of data" [routerLink]="'/product' + item.id" class="item" (click)="clearData()">
-                <div class="image" [style.backgroundImage]="'url(' + item.images[0] + ')'"></div>
-                <div class="title">{{ item.title }}</div>
-              </a>
-            </div>
-          </ng-container>
-        </ng-container>
-      </form>
-  
-      <div class="account">
-        <a [routerLink]="'/favorite'">
-          <svg class="icon-fav">
-            <use xlink:href="assets/sprite.svg#heart"></use>
-          </svg>
-        </a>
-  
-        <a [routerLink]="'/cart'">
-          <svg class="icon-cart">
-            <use xlink:href="assets/sprite.svg#bag"></use>
-          </svg>
-        </a>
-      </div>
-    </div>
   </div>
+</div>
