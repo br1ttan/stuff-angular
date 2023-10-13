@@ -14,7 +14,7 @@ export class HeaderComponent {
   @ViewChild('inputElement')
   public inputElement!: ElementRef<HTMLInputElement>;
   
-  private readonly routeEnum = AppRouteEnum;
+  public readonly routeEnum = AppRouteEnum;
   public data$: Observable<IProduct[] | []> = of([]);
 
   constructor(
