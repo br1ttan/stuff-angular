@@ -4,9 +4,12 @@
     <nav>
       <ul class="menu">
         <li *ngFor="let category of data">
-          <a class="link" [routerLink]="'/categories/' + category.id">{{
-            category.name
-          }}</a>
+          <a 
+            class="link" 
+            routerLinkActive="link-active" 
+            [routerLink]="'/categories/' + category.id">
+            {{ category.name }}
+          </a>
         </li>
       </ul>
     </nav>

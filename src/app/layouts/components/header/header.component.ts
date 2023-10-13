@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct, ProductApi } from '@features';
-import { Observable, of } from 'rxjs';
-import { BoxListenerDirective } from './directives';
 import { AppRouteEnum } from '@core';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +13,9 @@ import { AppRouteEnum } from '@core';
 export class HeaderComponent {
   @ViewChild('inputElement')
   public inputElement!: ElementRef<HTMLInputElement>;
-
+  
+  private readonly routeEnum = AppRouteEnum;
   public data$: Observable<IProduct[] | []> = of([]);
-  public routeEnum = AppRouteEnum;
 
   constructor(
     private readonly productApi: ProductApi,
@@ -28,7 +27,7 @@ export class HeaderComponent {
     this.clearData();
     this.inputElement.nativeElement.value = '';
 
-    this.router.navigateByUrl(`product/${id}`);
+    this.router.navigateByUrl(`${this.routeEnum.Product}/${id}`);
   }
 
   public onInputChange(): void {

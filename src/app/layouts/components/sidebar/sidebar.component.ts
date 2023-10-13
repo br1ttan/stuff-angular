@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AppRouteEnum } from '@core';
 import { CategoryApi } from '@features';
 
 @Component({
@@ -8,6 +9,7 @@ import { CategoryApi } from '@features';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidebarComponent {
+  public readonly routeEnum = AppRouteEnum;
   public data$ = this.categoryApi.getAll();
 
   constructor(
